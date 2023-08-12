@@ -1,90 +1,59 @@
 # Rallypoint suicide detection
 
-# Slides
-
-- Daniel on choosing threshold [here](https://docs.google.com/presentation/d/1gZgHj4qIQ9BmXwfV9K_Fel-1QlsSOQg8zzykpGiGZeM/edit?usp=sharing)
-
-- Richard on final results and error analysis [here](https://docs.google.com/presentation/d/1HLiLwjkF9ryofq5LuyrZaupyq_rdKDIW/edit?usp=sharing&ouid=103429979135230884916&rtpof=true&sd=true)
-
 # Data
 
-Noah is hosting the model's data on Dropbox: 
- https://www.dropbox.com/sh/1clfl1u2v6p225y/AADDDIiLo3DDt3h_NG0zGzLfa?dl=0
-
- 
-
-
-`data/input/`
-  - `rp/` datasets
-  - `roberta_pretrained_meta_text_num(final)/pred_seed_2/` checkpoints
-
-Some more data as saved in the Dropbox folder:
+`./data/input/final_datasets/` datasets
 ```
-RallyPoint Milestone 6 Code
---Dataset Notebook
---Model Notebook
-  --Multimodal-Toolkit
-    --datasets
-      -rp
-        train.csv
-        val.csv
-        test.csv
-    --logs
-      --roberta_base_text(final)
-      --roberta_pretrained_meta_text_num(final)
-      --roberta_pretrained_meta_text(final)
-        --pred_seed
-        --preds
-        --pred_seed_2
-          --rp_config(meta).json
-      --roberta_pretrained_text(final)
-  --Compute Evaluation plots and Examples.ipynb
-  --Hyperparameter_Tuning_of_Baseline_RP_Models.ipynb
-  --Multi-modal Toolkit
-  --Rallypoint_Multimodal_model_notebook(final).ipynb
-  --Rallypoint_Multimodal_model_notebook.ipynb
-  --baseline_models/
-    
+├── Profile_features.csv (which posts belong to each military branch, etc.)
+├── test.csv
+├── train.csv
+└── val.csv
 ```
-  
-`data/output/`
 
+`./data/output/`
+  ```
+  ├── performance
+  │   ├── LGBM_23-08-04T16-59-04
+  │   ├── LogReg_23-08-04T16-59-04
+  │   ├── roberta-base_text_20230807-203851
+  │   └── roberta_pretrained_meta_text_num(final)
+  └── semantic_analysis
+  ```
 
 
 # Code
 
-virtual environment: `conda activate rallypoint_stb_detector`
+### Requirements
+For roberta text model
 
-`conda create -n rallypoint_stb_detector python=3.7 pandas numpy scikit-learn seaborn matplotlib jupyterlab`
-`conda install 
 
-This uses:
+
 ```
-Python 3.7.12
-redis==3.5.0
-transformers==4.26.1 
-multimodal-transformers==0.2a0
+conda create -n rallypoint_stb_detector_text python=3.10.12 pandas numpy scikit-learn seaborn matplotlib jupyterlab torch==2.0.1 datasets==2.14.3 transformers==4.28.1 accelerate==0.15.0 optuna==3.2.0
+conda activate rallypoint_stb_detector_text
 ```
 
-TODO 
+For all other analyses including roberta multimodal model and semantic analysis
+```
+conda create -n rallypoint_stb_detector python=3.7 pandas numpy scikit-learn seaborn matplotlib==3.6.0 jupyterlab redis==3.5.0 transformers==4.26.1 multimodal-transformers==0.2a0 spacy==3.6.1 scattertext==0.1.19 pytextrank==3.2.5 textalloc==0.0.3
+conda activate rallypoint_stb_detector
+```
 
-`conda activate rallypoint_suicide_detection`
-`requirements.txt`
+### Models
 
+`LogReg.tfidf.ipynb` Logistic Regression models
 
-`LGBM Hyperparameter Tuning Notebook.ipynb` LGBM models
+`LGBM_tfif.ipynb` Light GBM models
 
+`roberta_text.ipynb` Finetuning, hyperparameter search, evaluation
 
-`multimodal_suicide_detector_minimal.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/danielmlow/rallypoint_suicide_detection/blob/main/multimodal_suicide_detector_minimal.ipynb)
-  - Minimal version for deployment.
+Roberta text+metadata model
+- `roberta_text_metadata_training.ipynb` Finetuning, hyperparameter search
+- `roberta_text_metadata_evaluation.ipynb` Evaluation
+- `roberta_text_metadata_training_minimal.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/danielmlow/rallypoint_suicide_detection/blob/main/multimodal_suicide_detector_minimal.ipynb)  Minimal version for deployment
 
-`multimodal_suicide_detector.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/danielmlow/rallypoint_suicide_detection/blob/main/multimodal_suicide_detector.ipynb)
-  - We ran these models in google colab to use their GPUs and load data from our personal Google Drive's 
-
-`error_analysis_richard_and_noah.ipynb` Script reproducing Noah's multimodal model, fixing dataset by removing duplicates, re-running (just test set?) and final results for manuscript.
-
-
-`multimodal_suicide_detector_with_results.ipynb` final results in paper. 
-
+### Semantic analysis
 
 `semantic_analysis.ipynb` words used in suicidal and nonsuicidal posts
+
+`scatter_text.ipynb` words used in suicidal and nonsuicidal posts
