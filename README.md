@@ -38,7 +38,7 @@ conda create -n rallypoint_stb_detector_text python=3.10.12 pandas numpy scikit-
 
 For semantic analysis
 ```
-conda create -n rallypoint_stb_semantic python=3.10.12 pandas numpy scikit-learn matplotlib==3.6.0 jupyterlab spacy==3.6.1 
+conda create -n rallypoint_stb_semantic python=3.10.12 pandas numpy scikit-learn seaborn==0.12.2 matplotlib==3.6.0 jupyterlab spacy==3.6.1 
 conda activate rallypoint_stb_semantic
 pip install scattertext==0.1.19 pytextrank==3.2.5 textalloc==0.0.3
 python -m spacy download en_core_web_sm
@@ -60,6 +60,9 @@ Roberta text+metadata model
 - `roberta_text_metadata_evaluation.ipynb` Evaluation
 - `roberta_text_metadata_training_minimal.ipynb` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/danielmlow/rallypoint_suicide_detection/blob/main/multimodal_suicide_detector_minimal.ipynb)  Minimal version for deployment
 
-### Semantic analysis
+### Statistical differences between types of posts 
 
 `scatter_text.ipynb` words used in suicidal and nonsuicidal posts
+
+`metadata_stats.ipynb` descriptive stats comparing metadata 
+
