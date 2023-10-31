@@ -13,10 +13,10 @@
 `./data/output/`
   ```
   ├── performance
-  │   ├── LGBM_23-08-04T16-59-04
-  │   ├── LogReg_23-08-04T16-59-04
-  │   ├── roberta-base_text_20230807-203851
-  │   └── roberta_pretrained_meta_text_num(final)
+  │   ├── LGBM_23-08-04T16-59-04
+   │   ├── LogReg_23-08-04T16-59-04
+  │   ├── roberta-base_text_20230807-203851
+  │   └── roberta_pretrained_meta_text_num(final)
   └── semantic_analysis
   ```
 
@@ -62,7 +62,9 @@ Roberta text+metadata model
 
 ### Statistical differences between types of posts 
 
-`scatter_text.ipynb` words used in suicidal and nonsuicidal posts
+`scattertext.ipynb` words used in suicidal and nonsuicidal posts. 
+
+- output: `semantic_analysis_no_text.html`  In the raw html file, I removed all private data, by replacing each post with an empty string: `"texts":['', '', '', ...]` by doing ['']*len(texts). If you just remove "texts", it will not functionally totally well. 
 
 `metadata_stats.ipynb` descriptive stats comparing metadata 
 
