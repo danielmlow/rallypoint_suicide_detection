@@ -33,7 +33,8 @@ conda activate rallypoint_stb_detector
 
 For roberta text model
 ```
-conda create -n rallypoint_stb_detector_text python=3.10.12 pandas numpy scikit-learn matplotlib jupyterlab torch==2.0.1 datasets==2.14.3 transformers==4.28.1 accelerate==0.15.0 optuna==3.2.0
+conda create -n rallypoint_stb_detector_text python=3.10.12 pandas numpy scikit-learn matplotlib jupyterlab torch==2.0.1 datasets==2.14.3 transformers==4.28.1 accelerate==0.15.0 optuna==3.2.0 imbalanced-learn==0.11.0
+# Or you can run on Colab
 ```
 
 For semantic analysis
