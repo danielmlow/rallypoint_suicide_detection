@@ -65,7 +65,9 @@ Roberta text+metadata model
 
 `scattertext.ipynb` words used in suicidal and nonsuicidal posts. 
 
-- output: `semantic_analysis_no_text.html`  In the raw html file, I removed all private data, by replacing each post with an empty string: `"texts":['', '', '', ...]` by doing ['']*len(texts). If you just remove "texts", it will not functionally totally well. 
+- output: `semantic_analysis_no_text.html`  In the raw html file, I removed all private data, by replacing each post with an empty string: `"texts":['', '', '', ...]` by doing ['']*len(texts). If you just remove "texts", it will not functionally totally well.
+- Then we can preview the html using: https://raw.githack.com/danielmlow/rallypoint_suicide_detection/main/semantic_analysis_no_text.html
+- (htmlpreview is inconsistent, raw.githack works better)
 
 `metadata_stats.ipynb` descriptive stats comparing metadata 
 
